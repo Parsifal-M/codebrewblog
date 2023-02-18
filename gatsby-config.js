@@ -21,7 +21,6 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-image`,
-    'gatsby-plugins-netlify',
     {
       resolve: `gatsby-source-filesystem`,
       options: {
