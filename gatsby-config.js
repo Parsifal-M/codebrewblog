@@ -44,6 +44,7 @@ module.exports = {
             options: {
               maxWidth: 630,
             },
+            resolve: `gatsby-remark-highlight-code`,
           },
           {
             resolve: `gatsby-remark-responsive-iframe`,

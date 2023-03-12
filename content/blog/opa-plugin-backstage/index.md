@@ -55,21 +55,21 @@ export async function cannotDeleteEntities(opaClient: OpaClient) {
 
 Currently it is not very modular as I am still figuring out how to make it work.
 
-I am still thinking about an adequate way to manage the policies, I do not want one huge file with all the policies in it. I am thinking of having a `policies` folder that could then divide the policies into different areas. For example, you could have a `catalog` folder that would contain all the policies for the catalog. This would allow you to have a more modular approach to managing the policies.
+I am still thinking about an adequate way to manage the policies, I do not want one huge file with all the policies in it. I am thinking of having a policies folder that could then divide the policies into different areas. For example, you could have a catalog folder that would contain all the policies for the catalog. This would allow you to have a more modular approach to managing the policies.
 
-This code defines a function called `cannotDeleteEntities`. This function takes an `OpaClient` object as an argument, which is used to communicate with an OPA server that contains the policy rules.
+This code defines a function called cannotDeleteEntities. This function takes an OpaClient object as an argument, which is used to communicate with an OPA server that contains the policy rules.
 
-The function returns a callback function that takes a `PolicyQuery` object as an argument and returns a `Promise` that resolves to a `PolicyDecision` object. This `PolicyQuery` object contains information about the permission being requested, such as the permission name and any associated parameters.
+The function returns a callback function that takes a PolicyQuery object as an argument and returns a Promise that resolves to a PolicyDecision object. This PolicyQuery object contains information about the permission being requested, such as the permission name and any associated parameters.
 
-The callback function checks if the permission being requested is to `delete` a catalog entity. If the name is `catalog.entity.delete`, the function proceeds to evaluate the `my-custom-policy` policy using the `OpaClient` object provided as an argument.
+The callback function checks if the permission being requested is to delete a catalog entity. If the name is catalog.entity.delete, the function proceeds to evaluate the my-custom-policy policy using the OpaClient object provided as an argument.
 
-The `evaluatePolicy` method of the `OpaClient` object is used to evaluate the policy, passing in an input object containing the `path` property set to `catalog.entity.delete`. The `evaluatePolicy` method sends a `POST` request to the OPA server with the policy `name` and `input data` in the request body.
+The evaluatePolicy method of the OpaClient object is used to evaluate the policy, passing in an input object containing the path property set to catalog.entity.delete. The evaluatePolicy method sends a POST request to the OPA server with the policy name and input data in the request body.
 
-If the request is successful (i.e., the `response.ok` property is `true`), the method parses the response body as JSON and returns the result property of the JSON object as a `boolean value`. If the request fails, the method throws an error with a message indicating the failure status.
+If the request is successful (i.e., the response.ok property is true), the method parses the response body as JSON and returns the result property of the JSON object as a boolean value. If the request fails, the method throws an error with a message indicating the failure status.
 
-The callback function returns a `PolicyDecision` object with the result property set to either `AuthorizeResult.ALLOW` or `AuthorizeResult.DENY`, depending on the result of the policy evaluation. If the policy `denies` the requested permission, the result property is set to `AuthorizeResult.DENY`. Otherwise, it is set to `AuthorizeResult.ALLOW`.
+The callback function returns a PolicyDecision object with the result property set to either AuthorizeResult.ALLOW or AuthorizeResult.DENY, depending on the result of the policy evaluation. If the policy denies the requested permission, the result property is set to AuthorizeResult.DENY. Otherwise, it is set to AuthorizeResult.ALLOW.
 
-If the requested permission is not to delete a catalog entity, the callback function returns a `PolicyDecision` object with the result property set to `AuthorizeResult.ALLOW`. This allows all other permissions by default.
+If the requested permission is not to delete a catalog entity, the callback function returns a PolicyDecision object with the result property set to AuthorizeResult.ALLOW. This allows all other permissions by default.
 
 The `opaClient.ts` file looks a little like this:
 
@@ -85,7 +85,7 @@ export class OpaClient {
   }
 
   async evaluatePolicy(policy: string, input: any): Promise<boolean> {
-    const response = await fetch(`${this.baseUrl}/v1/data/${policy}`, {
+    const response = await fetch(${this.baseUrl}/v1/data/${policy}, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -94,7 +94,7 @@ export class OpaClient {
     });
 
     if (!response.ok) {
-      throw new Error(`Failed to evaluate policy, status=${response.status}`);
+      throw new Error(Failed to evaluate policy, status=${response.status});
     }
 
     const data = await response.json();
@@ -103,13 +103,14 @@ export class OpaClient {
 }
 ```
 
-The `constructor` method takes a `Config` object as an argument, which is used to initialize the baseUrl property of the class. The baseUrl is obtained from the configuration object by calling the `config.getString` method with the key `integrations.opa.baseUrl`. This allows you to easily configure the URL of the OPA server by setting the `integrations.opa.baseUrl` property in your Backstage configuration file.
 
-The `evaluatePolicy` method is used to evaluate an OPA policy given its name and an input object containing data that will be used by the policy to make a decision. The method sends a `POST` request to the OPA server with the policy name and input data in the request body, using the `node-fetch` library.
+The constructor method takes a Config object as an argument, which is used to initialize the baseUrl property of the class. The baseUrl is obtained from the configuration object by calling the config.getString method with the key integrations.opa.baseUrl. This allows you to easily configure the URL of the OPA server by setting the integrations.opa.baseUrl property in your Backstage configuration file.
 
-If the request is successful (i.e., the `response.ok` property is `true`), the method parses the response body as JSON and returns the result property of the JSON object as a `boolean` value. If the request fails (i.e., the `response.ok` property is `false`), the method throws an error with a message indicating the failure status.
+The evaluatePolicy method is used to evaluate an OPA policy given its name and an input object containing data that will be used by the policy to make a decision. The method sends a POST request to the OPA server with the policy name and input data in the request body, using the node-fetch library.
 
-This `OpaClient` class can be used to create instances of OPA clients that can be used throughout your Backstage application to evaluate policies and make authorization decisions.
+If the request is successful (i.e., the response.ok property is true), the method parses the response body as JSON and returns the result property of the JSON object as a boolean value. If the request fails (i.e., the response.ok property is false), the method throws an error with a message indicating the failure status.
+
+This OpaClient class can be used to create instances of OPA clients that can be used throughout your Backstage application to evaluate policies and make authorization decisions.
 
 I have tested this code locally and it seems to work as expected... as of now.
 
@@ -119,7 +120,7 @@ I have tested this code locally and it seems to work as expected... as of now.
 - I'd like to add some tests. 🙃
 - Better documentation.
 - I'd like to add some more examples of how to use OPA with Backstage.
-- Add more policies to the `policies.ts` file to cover more use cases. (would be cool to have a library of policies that people can use)
+- Add more policies to the policies.ts file to cover more use cases. (would be cool to have a library of policies that people can use)
 - More longterm, I would like it to be possible to view and edit policies in the GUI of Backstage and apply them on the fly.
 
 ## Stay Tuned 📺
