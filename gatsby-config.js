@@ -14,7 +14,7 @@ module.exports = {
       name: `Peter Macdonald`,
       summary: `Open Sourcerer, Software Engineer, and Tech Enthusiast.`,
     },
-    siteUrl: `https://parsifal-m.github.io/`,
+    siteUrl: `https://thecodebrew.quest`,
     social: {
       twitter: `@_PeterM_`,
     },
