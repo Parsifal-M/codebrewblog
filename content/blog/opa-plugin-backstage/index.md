@@ -6,7 +6,7 @@ description: "How Hard Can It Be?"
 
 # Getting Plugged In 🔌
 
-I have been umming and ahing over making an attempt at creating some plugins for [Backstage](https://backstage.io/) on the one hand it would be a really cool thing to do and on the other its kind of terrifying and can get quite complex unless you have an idea of what you are doing.
+I have been umming and ahing over making an attempt at creating some plugins for [Backstage](https://backstage.io/) on the one hand it would be a really cool thing to do and on the other its kind of terrifying and can get quite complex unless you have an idea of what you are doing. Be warned! From here on out things get a little experimental!
 
 ## The Idea 💡
 
@@ -53,23 +53,13 @@ export async function cannotDeleteEntities(opaClient: OpaClient) {
 }
 ```
 
-Currently it is not very modular as I am still figuring out how to make it work.
+In the above code snippet, we have a function called cannotDeleteEntities that helps control user permissions. 
 
-I am still thinking about an adequate way to manage the policies, I do not want one huge file with all the policies in it. I am thinking of having a policies folder that could then divide the policies into different areas. For example, you could have a catalog folder that would contain all the policies for the catalog. This would allow you to have a more modular approach to managing the policies.
+Specifically, it prevents users from deleting catalog entities. The function takes an OpaClient object as an argument, which is used to interact with the policy rules stored on an OPA server.
 
-This code defines a function called cannotDeleteEntities. This function takes an OpaClient object as an argument, which is used to communicate with an OPA server that contains the policy rules.
+The function returns a callback that accepts a PolicyQuery object and produces a PolicyDecision object. If the requested permission is to delete a catalog entity, the function evaluates the 'my-custom-policy' policy using the evaluatePolicy method of the OpaClient. Based on the evaluation result, the function returns a PolicyDecision object with either an AuthorizeResult.DENY or AuthorizeResult.ALLOW result.
 
-The function returns a callback function that takes a PolicyQuery object as an argument and returns a Promise that resolves to a PolicyDecision object. This PolicyQuery object contains information about the permission being requested, such as the permission name and any associated parameters.
-
-The callback function checks if the permission being requested is to delete a catalog entity. If the name is catalog.entity.delete, the function proceeds to evaluate the my-custom-policy policy using the OpaClient object provided as an argument.
-
-The evaluatePolicy method of the OpaClient object is used to evaluate the policy, passing in an input object containing the path property set to catalog.entity.delete. The evaluatePolicy method sends a POST request to the OPA server with the policy name and input data in the request body.
-
-If the request is successful (i.e., the response.ok property is true), the method parses the response body as JSON and returns the result property of the JSON object as a boolean value. If the request fails, the method throws an error with a message indicating the failure status.
-
-The callback function returns a PolicyDecision object with the result property set to either AuthorizeResult.ALLOW or AuthorizeResult.DENY, depending on the result of the policy evaluation. If the policy denies the requested permission, the result property is set to AuthorizeResult.DENY. Otherwise, it is set to AuthorizeResult.ALLOW.
-
-If the requested permission is not to delete a catalog entity, the callback function returns a PolicyDecision object with the result property set to AuthorizeResult.ALLOW. This allows all other permissions by default.
+In this case, for any other permissions, the callback function returns a PolicyDecision object with an AuthorizeResult.ALLOW result by default, allowing all other actions. (This is just for testing purposes, in a real-world scenario, you might want to have a bit more control over what permissions are allowed and what are not.)
 
 The `opaClient.ts` file looks a little like this:
 
@@ -104,17 +94,15 @@ export class OpaClient {
 ```
 
 
-The constructor method takes a Config object as an argument, which is used to initialize the baseUrl property of the class. The baseUrl is obtained from the configuration object by calling the config.getString method with the key integrations.opa.baseUrl. This allows you to easily configure the URL of the OPA server by setting the integrations.opa.baseUrl property in your Backstage configuration file.
+The above defines an OpaClient class used to interact with an OPA server for the policy evaluation.
 
-The evaluatePolicy method is used to evaluate an OPA policy given its name and an input object containing data that will be used by the policy to make a decision. The method sends a POST request to the OPA server with the policy name and input data in the request body, using the node-fetch library.
+The evaluatePolicy method accepts a policy name and input data. It then sends a POST request to the OPA server to evaluate the specified policy. If the evaluation is successful, it returns the result as a boolean value.
 
-If the request is successful (i.e., the response.ok property is true), the method parses the response body as JSON and returns the result property of the JSON object as a boolean value. If the request fails (i.e., the response.ok property is false), the method throws an error with a message indicating the failure status.
-
-This OpaClient class can be used to create instances of OPA clients that can be used throughout your Backstage application to evaluate policies and make authorization decisions.
-
-I have tested this code locally and it seems to work as expected... as of now.
+I think this is a good start, but I am sure there is a lot of room for improvement, currently we still need to add this to the Backstage permission system, which I will cover in the next post.
 
 ## Whats Next 🗺
+
+The next challange is to integrate this into the Backstage permission system (in a `permission.ts` file). I have been playing around with this and had some promising results, but I am not yet ready to share them. I will update this post when I have something more polished to show!
 
 - I'd like to make it more modular and configurable.
 - I'd like to add some tests. 🙃
