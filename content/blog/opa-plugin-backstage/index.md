@@ -1,6 +1,6 @@
 ---
 title: OPA Plugin for Backstage
-date: "2023-03-10T08:42:51Z"
+date: "2023-03-16T17:01:26Z"
 description: "How Hard Can It Be?"
 ---
 
@@ -118,6 +118,7 @@ I have tested this code locally and it seems to work as expected... as of now.
 
 - I'd like to make it more modular and configurable.
 - I'd like to add some tests. 🙃
+- Make sure it works reliably.
 - Better documentation.
 - I'd like to add some more examples of how to use OPA with Backstage.
 - Add more policies to the policies.ts file to cover more use cases. (would be cool to have a library of policies that people can use)
