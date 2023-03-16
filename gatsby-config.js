@@ -14,7 +14,7 @@ module.exports = {
       name: `Peter Macdonald`,
       summary: `Open Sourcerer, Software Engineer, and Tech Enthusiast.`,
     },
-    siteUrl: `https://parsifal-m.github.io/`,
+    siteUrl: `https://thecodebrew.quest`,
     social: {
       twitter: `@_PeterM_`,
     },
@@ -44,6 +44,7 @@ module.exports = {
             options: {
               maxWidth: 630,
             },
+            resolve: `gatsby-remark-highlight-code`,
           },
           {
             resolve: `gatsby-remark-responsive-iframe`,
