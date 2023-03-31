@@ -1,7 +1,7 @@
 ---
-title: Let's Contribute to Open Source
+title: Weeklies - Week 12
 date: "2023-03-31T10:38:13Z"
-description: "Dive into the world of open source"
+description: "What happened in week 12 of 2023"
 ---
 
 Hi everyone 👋!
