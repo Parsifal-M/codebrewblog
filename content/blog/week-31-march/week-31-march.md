@@ -28,11 +28,13 @@ I will be writing a blog post about it soon, so keep an eye out for that.
 
 ## Open Source Contributions
 
-As I have been pretty busy with the launch of Backstage, I haven't had as much time to contribute to open source which makes me sad although trying to be active in the communities I am part of. I have been working on a few things, but I haven't had the time to finish them. I hope to be able to continue contributing soon!
+As I have been pretty busy with the launch of Backstage, I haven't had as much time to contribute to open source which makes me sad. I have still been active in the communities I am part of and have been working on a few things, but I haven't had the time to finish them. I hope to be able to continue contributing soon!
 
 ## KubeCon
 
 Super hyped for KubeCon this year, I am really looking forward to it. I am hoping to learn a lot and meet some awesome people, see some familiar faces and some good friends.
+
+Comin' for yo swag! 🤣
 
 ## House Refactoring
 
