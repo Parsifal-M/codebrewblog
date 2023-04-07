@@ -1,18 +1,18 @@
 ---
-title: Weeklies - Week 12
+title: Weeklies - Week 13
 date: "2023-03-31T10:38:13Z"
-description: "What happened in week 12 of 2023"
+description: "What happened in week 13 of 2023"
 ---
 
 Hi everyone 👋!
 
 This will be my attempt at writing weekly blog posts.
 
-> It is currently week 12 in 2023. There are 40 weeks remaining.
+> It is currently week 13 in 2023. There are 40 weeks remaining.
 
 Lets see how this goes.
 
-# Week 12
+# Week 13
 
 ## Backstage Launch
 
