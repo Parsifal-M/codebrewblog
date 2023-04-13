@@ -102,7 +102,7 @@ module.exports = {
               }
             }`,
             output: "/rss.xml",
-            title: "RSS Feed I'll probably never use",
+            title: "RSS Feed for CodeBrew!",
           },
         ],
       },
