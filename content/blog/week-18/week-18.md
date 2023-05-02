@@ -15,7 +15,7 @@ Although I am a winter fan, I have to admit that spring does make me feel happy.
 
 I am also a big bird lover so I love this time of year, I get to fill up all my bird feeders and watch the birds come and go. I have a few feeders in the garden and a few outside the window where I work. I have a few regulars that come and visit, but I am always on the lookout for new birds. I think the coolest one I have seen in the garden is a Eurasian Jay. But I also love watching the Ravens and Crows they are so curious and smart it's amazing to watch them.
 
-![Eurasian Jay](./jay-perches-on-branch.jpg)
+![Eurasian Jay](jay-perches-on-branch.jpg)
 ---
 
 ## Birthday Vibes 🎂
@@ -38,7 +38,7 @@ I miss using Go, I want to use Go again. I've been toying with some ideas to get
 
 Bilbao here we come! So excited to go to the Open Source Summit, I really loved it in Dublin and I am sure Bilbao will be just as good. I am also looking forward to seeing the city as I have never been before. Looking forward to some hopefully warm weather and nice sangria! Also keen on checking out the Guggenheim Museum. Look at it, it's amazing!
 
-![Guggenheim Museum](./gug.jpeg)
+![Guggenheim Museum](gug.jpeg)
 ---
 
 ## Key Takeaways from the week 🤔
