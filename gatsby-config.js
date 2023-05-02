@@ -17,7 +17,7 @@ module.exports = {
     siteUrl: `https://thecodebrew.quest`,
     social: {
       twitter: `@_PeterM_`,
-      mastodon: `https://hachyderm.io/@parcifal`,
+      mastodon: `@parcifal`,
     },
   },
   plugins: [
