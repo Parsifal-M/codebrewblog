@@ -27,14 +27,9 @@
   --spacing-20: 5rem;
   --spacing-24: 6rem;
   --spacing-32: 8rem;
-  --fontFamily-sans: "MontserratVariable", system-ui, -apple-system,
-    BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-    "Noto Color Emoji";
-  --fontFamily-serif: "Arial", "Georgia", Cambria, "Times New Roman",
-    Times, serif;
-  --font-body: var(--fontFamily-serif);
-  --font-heading: var(--fontFamily-sans);
+  --fontFamily-roboto-mono: "Roboto Mono", monospace;
+  --font-body: var(--fontFamily-roboto-mono);
+  --font-heading: var(--fontFamily-roboto-mono);
   --fontWeight-normal: 400;
   --fontWeight-bold: 700;
   --fontWeight-black: 900;
@@ -53,6 +48,7 @@
   --fontSize-6: 2.488rem;
   --fontSize-7: 2.986rem;
   --color-primary: #005b99;
+  --a-color-primary: #22c1c3;
   --color-text: #e6e6e6;
   --color-text-light: #4f5969;
   --color-heading: #e6e6e6;
@@ -235,7 +231,7 @@ table thead tr th {
 /* Link */
 
 a {
-  color: var(--color-primary);
+  color: var(--a-color-primary);
 }
 
 a:hover,
@@ -275,7 +271,7 @@ a:focus {
 
 .post-list-item h2 {
   font-size: var(--fontSize-4);
-  color: var(--color-primary);
+  color: var(--a-color-primary);
   margin-bottom: var(--spacing-2);
   margin-top: var(--spacing-0);
 }
