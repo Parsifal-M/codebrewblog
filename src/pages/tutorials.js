@@ -1,22 +1,17 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
-import Seo from "../components/seo"
-import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
-deckDeckGoHighlightElement();
 
-const BlogIndex = ({ data, location }) => {
+const TutorialIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
-  const posts = data.allMarkdownRemark.nodes
+  const tutorials = data.allMarkdownRemark.nodes
 
-  if (posts.length === 0) {
+  if (tutorials.length === 0) {
     return (
       <Layout location={location} title={siteTitle}>
-        <Bio />
         <p>
-          No blog posts found. Add markdown posts to "content/blog" (or the
+          No tutorial posts found. Add markdown posts to "content/tutorials" (or the
           directory you specified for the "gatsby-source-filesystem" plugin in
           gatsby-config.js).
         </p>
@@ -26,13 +21,12 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Bio />
       <ol style={{ listStyle: `none` }}>
-        {posts.map(post => {
-          const title = post.frontmatter.title || post.fields.slug
+        {tutorials.map(tutorial => {
+          const title = tutorial.frontmatter.title || tutorial.fields.slug
 
           return (
-            <li key={post.fields.slug}>
+            <li key={tutorial.fields.slug}>
               <article
                 className="post-list-item"
                 itemScope
@@ -40,16 +34,16 @@ const BlogIndex = ({ data, location }) => {
               >
                 <header>
                   <h2>
-                    <Link to={post.fields.slug} itemProp="url">
+                    <Link to={tutorial.fields.slug} itemProp="url">
                       <span itemProp="headline">{title}</span>
                     </Link>
                   </h2>
-                  <small>{post.frontmatter.date}</small>
+                  <small>{tutorial.frontmatter.date}</small>
                 </header>
                 <section>
                   <p
                     dangerouslySetInnerHTML={{
-                      __html: post.frontmatter.description || post.excerpt,
+                      __html: tutorial.frontmatter.description || tutorial.excerpt,
                     }}
                     itemProp="description"
                   />
@@ -63,14 +57,7 @@ const BlogIndex = ({ data, location }) => {
   )
 }
 
-export default BlogIndex
-
-/**
- * Head export to define metadata for the page
- *
- * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
- */
-export const Head = () => <Seo title="All posts" />
+export default TutorialIndex
 
 export const pageQuery = graphql`
   {
@@ -80,8 +67,8 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/blog/" } },
-      sort: { frontmatter: {date: DESC}}
+      filter: { fileAbsolutePath: { regex: "/tutorials/" } },
+      sort: {frontmatter: {date: DESC}}
     ) {
       nodes {
         excerpt
@@ -97,4 +84,3 @@ export const pageQuery = graphql`
     }
   }
 `
-
