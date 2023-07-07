@@ -8,8 +8,8 @@ const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 // Define the template for blog post
-const blogPost = path.resolve(`./src/templates/blog-post.js`)
-const tutorialPost = path.resolve(`./src/templates/tutorial-post.js`)
+const blogPost = path.resolve(`./src/templates/blog-post.tsx`)
+const tutorialPost = path.resolve(`./src/templates/tutorial-post.tsx`)
 
 
 /**
