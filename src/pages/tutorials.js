@@ -16,9 +16,7 @@ const TutorialIndex = ({ data, location }) => {
       <Layout location={location} title={siteTitle}>
         <Bio />
         <p>
-          No tutorial posts found. Add markdown posts to "content/tutorials" (or the
-          directory you specified for the "gatsby-source-filesystem" plugin in
-          gatsby-config.js).
+          Nothing here yet! Check back soon!
         </p>
       </Layout>
     )
