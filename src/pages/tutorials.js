@@ -7,7 +7,7 @@ import Seo from "../components/seo"
 import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
 deckDeckGoHighlightElement();
 
-const BlogIndex = ({ data, location }) => {
+const TutorialIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
 
@@ -16,9 +16,7 @@ const BlogIndex = ({ data, location }) => {
       <Layout location={location} title={siteTitle}>
         <Bio />
         <p>
-          No blog posts found. Add markdown posts to "content/blog" (or the
-          directory you specified for the "gatsby-source-filesystem" plugin in
-          gatsby-config.js).
+          Nothing here yet! Check back soon!
         </p>
       </Layout>
     )
@@ -63,7 +61,7 @@ const BlogIndex = ({ data, location }) => {
   )
 }
 
-export default BlogIndex
+export default TutorialIndex
 
 /**
  * Head export to define metadata for the page
@@ -80,7 +78,7 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/blog/" } },
+      filter: { fileAbsolutePath: { regex: "/tutorials/" } },
       sort: { frontmatter: {date: DESC}}
     ) {
       nodes {
