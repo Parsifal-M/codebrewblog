@@ -1,15 +1,20 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 
+import Bio from "../components/bio"
 import Layout from "../components/layout"
+import Seo from "../components/seo"
+import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
+deckDeckGoHighlightElement();
 
 const TutorialIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
-  const tutorials = data.allMarkdownRemark.nodes
+  const posts = data.allMarkdownRemark.nodes
 
-  if (tutorials.length === 0) {
+  if (posts.length === 0) {
     return (
       <Layout location={location} title={siteTitle}>
+        <Bio />
         <p>
           No tutorial posts found. Add markdown posts to "content/tutorials" (or the
           directory you specified for the "gatsby-source-filesystem" plugin in
@@ -21,12 +26,13 @@ const TutorialIndex = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
+      <Bio />
       <ol style={{ listStyle: `none` }}>
-        {tutorials.map(tutorial => {
-          const title = tutorial.frontmatter.title || tutorial.fields.slug
+        {posts.map(post => {
+          const title = post.frontmatter.title || post.fields.slug
 
           return (
-            <li key={tutorial.fields.slug}>
+            <li key={post.fields.slug}>
               <article
                 className="post-list-item"
                 itemScope
@@ -34,16 +40,16 @@ const TutorialIndex = ({ data, location }) => {
               >
                 <header>
                   <h2>
-                    <Link to={tutorial.fields.slug} itemProp="url">
+                    <Link to={post.fields.slug} itemProp="url">
                       <span itemProp="headline">{title}</span>
                     </Link>
                   </h2>
-                  <small>{tutorial.frontmatter.date}</small>
+                  <small>{post.frontmatter.date}</small>
                 </header>
                 <section>
                   <p
                     dangerouslySetInnerHTML={{
-                      __html: tutorial.frontmatter.description || tutorial.excerpt,
+                      __html: post.frontmatter.description || post.excerpt,
                     }}
                     itemProp="description"
                   />
@@ -59,6 +65,13 @@ const TutorialIndex = ({ data, location }) => {
 
 export default TutorialIndex
 
+/**
+ * Head export to define metadata for the page
+ *
+ * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
+ */
+export const Head = () => <Seo title="All posts" />
+
 export const pageQuery = graphql`
   {
     site {
@@ -68,7 +81,7 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "/tutorials/" } },
-      sort: {frontmatter: {date: DESC}}
+      sort: { frontmatter: {date: DESC}}
     ) {
       nodes {
         excerpt
@@ -84,3 +97,4 @@ export const pageQuery = graphql`
     }
   }
 `
+
