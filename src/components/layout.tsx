@@ -7,30 +7,33 @@ deckDeckGoHighlightElement();
 const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
-  let header
 
-  if (isRootPath) {
-    header = (
-      <>
-        <h1 className="main-heading">
-          <Link to="/">{title}</Link>
-        </h1>
-        <nav className="navigation">
-          <ul style={{ display: "flex", justifyContent: "space-between" }}>
-            <li>
-              <Link to="/tutorials">Tutorials</Link>
-            </li>
-          </ul>
-        </nav>
-      </>
-    )
-  } else {
-    header = (
-      <Link className="header-link-home" to="/">
-        {title}
-      </Link>
-    )
-  }
+  // Define the nav items
+  const navItems = [
+    { pathname: "/", display: "Home" },
+    { pathname: "/tutorials", display: "Tutorials" },
+    { pathname: "/blog", display: "Blog" },
+  ]
+
+  // Generate the nav items
+  const navLinks = navItems.map(({ pathname, display }) => (
+    <li style={{ marginRight: "1rem" }} key={pathname}>
+      <Link to={pathname}>{display}</Link>
+    </li>
+  ))
+
+  const header = (
+    <>
+      <h1 className="main-heading">
+        <Link to="/">{title}</Link>
+      </h1>
+      <nav className="navigation">
+        <ul style={{ display: "flex", justifyContent: "flex-start" }}>
+          {navLinks}
+        </ul>
+      </nav>
+    </>
+  )
 
   return (
     <div className="global-wrapper" data-is-root-path={isRootPath}>
