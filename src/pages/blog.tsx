@@ -69,35 +69,10 @@ export default BlogIndex
  */
 
 export const pageQuery = graphql`
-  {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    allBlogPosts: allMarkdownRemark(
-      filter: {fileAbsolutePath: {regex: "/blog/"}}
-      sort: {frontmatter: {date: DESC}}
-      limit: 3
-    ) {
+  query {
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
       nodes {
-        excerpt
-        fields {
-          slug
-        }
-        frontmatter {
-          date(formatString: "MMMM DD, YYYY")
-          title
-          description
-        }
-      }
-    }
-    allTutorialPosts: allMarkdownRemark(
-      filter: {fileAbsolutePath: {regex: "/tutorials/"}}
-      sort: {frontmatter: {date: DESC}}
-      limit: 3
-    ) {
-      nodes {
+        id
         excerpt
         fields {
           slug
