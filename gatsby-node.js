@@ -40,29 +40,37 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return
   }
 
-  const posts = result.data.allMarkdownRemark.nodes
+  const allPosts = result.data.allMarkdownRemark.nodes
 
-  // Create blog posts pages
+  // Separate posts into blog posts and tutorial posts
+  const blogPosts = allPosts.filter(post => !post.fields.slug.includes('tutorial'))
+  const tutorialPosts = allPosts.filter(post => post.fields.slug.includes('tutorial'))
+
+  // Create blog posts pages and tutorial posts pages
   // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
   // `context` is available in the template as a prop and as a variable in GraphQL
 
-  if (posts.length > 0) {
-    posts.forEach((post, index) => {
-      const previousPostId = index === 0 ? null : posts[index - 1].id
-      const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
-      const component = post.fields.slug.includes('tutorial') ? tutorialPost : blogPost;
+  const createPostPages = (posts, component) => {
+    if (posts.length > 0) {
+      posts.forEach((post, index) => {
+        const previousPostId = index === 0 ? null : posts[index - 1].id
+        const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
 
-      createPage({
-        path: post.fields.slug,
-        component: component,
-        context: {
-          id: post.id,
-          previousPostId,
-          nextPostId,
-        },
+        createPage({
+          path: post.fields.slug,
+          component: component,
+          context: {
+            id: post.id,
+            previousPostId,
+            nextPostId,
+          },
+        })
       })
-    })
+    }
   }
+
+  createPostPages(blogPosts, blogPost)
+  createPostPages(tutorialPosts, tutorialPost)
 }
 
 /**
