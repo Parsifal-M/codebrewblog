@@ -1,9 +1,8 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
-
 import Bio from "../components/bio"
 import Layout from "../components/layout"
-import Seo from "../components/seo"
+
 import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
 deckDeckGoHighlightElement();
 
@@ -16,9 +15,7 @@ const BlogIndex = ({ data, location }) => {
       <Layout location={location} title={siteTitle}>
         <Bio />
         <p>
-          No blog posts found. Add markdown posts to "content/blog" (or the
-          directory you specified for the "gatsby-source-filesystem" plugin in
-          gatsby-config.js).
+          No blog posts found.
         </p>
       </Layout>
     )
@@ -78,9 +75,27 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/blog/" } },
-      sort: { frontmatter: {date: DESC}}
+    allBlogPosts: allMarkdownRemark(
+      filter: {fileAbsolutePath: {regex: "/blog/"}}
+      sort: {frontmatter: {date: DESC}}
+      limit: 3
+    ) {
+      nodes {
+        excerpt
+        fields {
+          slug
+        }
+        frontmatter {
+          date(formatString: "MMMM DD, YYYY")
+          title
+          description
+        }
+      }
+    }
+    allTutorialPosts: allMarkdownRemark(
+      filter: {fileAbsolutePath: {regex: "/tutorials/"}}
+      sort: {frontmatter: {date: DESC}}
+      limit: 3
     ) {
       nodes {
         excerpt
