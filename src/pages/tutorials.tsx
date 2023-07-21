@@ -3,6 +3,7 @@ import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
 import SEO from "../components/seo"
+import Bio from "../components/bio";
 
 // deckDeckGoHighlightElement();
 
@@ -22,6 +23,7 @@ const TutorialIndex = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
+      <Bio />
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
 
