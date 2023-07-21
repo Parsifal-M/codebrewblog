@@ -23,9 +23,9 @@ const BlogIndex = ({ data, location }) => {
     <Layout location={location} title={siteTitle}>
       {posts.map(post => {
         const title = post.frontmatter.title || post.fields.slug
-  
+
         return (
-          <div key={post.fields.slug}>
+          <li key={post.fields.slug}>
             <article
               key={post.fields.slug}
               itemScope
@@ -48,11 +48,11 @@ const BlogIndex = ({ data, location }) => {
                 />
               </section>
             </article>
-          </div>
+          </li>
         )
       })}
     </Layout>
-  )  
+  )
 }
 
 export default BlogIndex
