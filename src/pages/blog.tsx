@@ -4,7 +4,7 @@ import Layout from "../components/layout"
 import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
 import SEO from "../components/seo"
 
-deckDeckGoHighlightElement();
+// deckDeckGoHighlightElement();
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
