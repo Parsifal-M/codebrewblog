@@ -13,7 +13,6 @@ const TutorialIndex = ({ data, location }) => {
   if (posts.length === 0) {
     return (
       <Layout location={location} title={siteTitle}>
-        <SEO title="All posts" description={undefined} children={undefined} />
         <p>
           Nothing here yet! Check back soon!
         </p>
@@ -23,7 +22,6 @@ const TutorialIndex = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-        <SEO title="All posts" description={undefined} children={undefined} />
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
 

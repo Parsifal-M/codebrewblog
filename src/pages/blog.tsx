@@ -2,7 +2,6 @@ import * as React from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
-import SEO from "../components/seo"
 
 // deckDeckGoHighlightElement();
 
@@ -13,7 +12,6 @@ const BlogIndex = ({ data, location }) => {
   if (posts.length === 0) {
     return (
       <Layout location={location} title={siteTitle}>
-        <SEO title="All posts" description={undefined} children={undefined} />
         <p>
           Nothing here yet! Check back soon!
         </p>
@@ -23,7 +21,6 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-        <SEO title="All posts" description={undefined} children={undefined} />
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
 
