@@ -1,7 +1,7 @@
-import React from "react"
+import * as React from "react"
 import { Link, graphql } from "gatsby"
-import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
 import Layout from "../components/layout"
+import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
 import SEO from "../components/seo"
 
 deckDeckGoHighlightElement();
@@ -15,7 +15,7 @@ const BlogIndex = ({ data, location }) => {
       <Layout location={location} title={siteTitle}>
         <SEO title="All posts" description={undefined} children={undefined} />
         <p>
-          No blog posts found. That doesn't seem right.
+          Nothing here yet! Check back soon!
         </p>
       </Layout>
     )
@@ -23,43 +23,51 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="All posts" description={undefined} children={undefined} />
-      {posts.map(post => {
-        const title = post.frontmatter.title || post.fields.slug
+        <SEO title="All posts" description={undefined} children={undefined} />
+        {posts.map(post => {
+          const title = post.frontmatter.title || post.fields.slug
 
-        return (
-          <article
-            key={post.fields.slug}
-            itemScope
-            itemType="http://schema.org/Article"
-          >
-            <header>
-              <h2>
-                <Link to={post.fields.slug} itemProp="url">
-                  <span itemProp="headline">{title}</span>
-                </Link>
-              </h2>
-              <small>{post.frontmatter.date}</small>
-            </header>
-            <section>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: post.frontmatter.description || post.excerpt,
-                }}
-                itemProp="description"
-              />
-            </section>
-          </article>
-        )
-      })}
+          return (
+            <li key={post.fields.slug}>
+              <article
+                className="post-list-item"
+                itemScope
+                itemType="http://schema.org/Article"
+              >
+                <header>
+                  <h2>
+                    <Link to={post.fields.slug} itemProp="url">
+                      <span itemProp="headline">{title}</span>
+                    </Link>
+                  </h2>
+                  <small>{post.frontmatter.date}</small>
+                </header>
+                <section>
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: post.frontmatter.description || post.excerpt,
+                    }}
+                    itemProp="description"
+                  />
+                </section>
+              </article>
+            </li>
+          )
+        })}
     </Layout>
   )
 }
 
 export default BlogIndex
 
+/**
+ * Head export to define metadata for the page
+ *
+ * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
+ */
+
 export const pageQuery = graphql`
-  query {
+  {
     site {
       siteMetadata {
         title
@@ -67,8 +75,8 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "/blog/" } },
-      sort: { frontmatter: {date: DESC}}      
-      ) {
+      sort: { frontmatter: {date: DESC}}
+    ) {
       nodes {
         excerpt
         fields {
@@ -83,3 +91,4 @@ export const pageQuery = graphql`
     }
   }
 `
+
