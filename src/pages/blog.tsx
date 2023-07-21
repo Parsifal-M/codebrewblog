@@ -1,8 +1,10 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-
+import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+
+deckDeckGoHighlightElement();
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
@@ -13,9 +15,7 @@ const BlogIndex = ({ data, location }) => {
       <Layout location={location} title={siteTitle}>
         <SEO title="All posts" description={undefined} children={undefined} />
         <p>
-          No blog posts found. Add markdown posts to "content/blog" (or the
-          directory you specified for the "gatsby-source-filesystem" plugin in
-          gatsby-config.js).
+          No blog posts found. That doesn't seem right.
         </p>
       </Layout>
     )
@@ -65,7 +65,10 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/blog/" } },
+      sort: { frontmatter: {date: DESC}}      
+      ) {
       nodes {
         excerpt
         fields {

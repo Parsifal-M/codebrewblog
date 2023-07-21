@@ -1,8 +1,8 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
+import SEO from "../components/seo"
 
 deckDeckGoHighlightElement();
 
@@ -13,7 +13,7 @@ const TutorialIndex = ({ data, location }) => {
   if (posts.length === 0) {
     return (
       <Layout location={location} title={siteTitle}>
-        <Bio />
+        <SEO title="All posts" description={undefined} children={undefined} />
         <p>
           Nothing here yet! Check back soon!
         </p>
@@ -23,8 +23,7 @@ const TutorialIndex = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Bio />
-      <ol style={{ listStyle: `none` }}>
+        <SEO title="All posts" description={undefined} children={undefined} />
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
 
@@ -55,7 +54,6 @@ const TutorialIndex = ({ data, location }) => {
             </li>
           )
         })}
-      </ol>
     </Layout>
   )
 }
