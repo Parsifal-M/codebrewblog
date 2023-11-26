@@ -11,7 +11,7 @@
   --maxWidth-3xl: 48rem;
   --maxWidth-4xl: 56rem;
   --maxWidth-full: "100%";
-  --maxWidth-wrapper: var(--maxWidth-2xl);
+  --maxWidth-wrapper: var(--maxWidth-4xl);
   --spacing-px: "1px";
   --spacing-0: 0;
   --spacing-1: 0.25rem;
@@ -49,10 +49,10 @@
   --fontSize-7: 2.986rem;
   --color-primary: #BDBDBD; /* Muted version of #FAFAFA */
   --a-color-primary: #607D8B; /* Muted version of #22c1c3 */
-  --color-text: #9E9E9E; /* Muted version of #e6e6e6 */
+  --color-text: #BDBDBD; /* Brighter version of #9E9E9E */
   --color-text-light: #4f5969; /* Keep existing color, it's already muted */
-  --color-heading: #9E9E9E; /* Muted version of #e6e6e6 */
-  --color-heading-black: #757575; /* Muted version of #e6e6e6 */
+  --color-heading: #BDBDBD; /* Brighter version of #9E9E9E */
+  --color-heading-black: #9E9E9E; /* Brighter version of #757575 */
   --color-accent: #9E9E9E; /* Muted version of #d1dce5 */
   --color-background: #212121; /* Dark background for contrast */
 }
@@ -347,21 +347,21 @@ nav ul li {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  transition: background 0.5s ease;
+  transition: background 0.5s ease, color 0.5s ease; /* Added color transition */
   margin-left: -10px; 
   
   /* Create a background and apply it to the text only, then make the text transparent */
-  background: linear-gradient(90deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-accent) 99%, var(--color-accent) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .navigation li a:hover {
-  background: linear-gradient(90deg, #1c92d2 0%, #f2fcfe 99%, #f2fcfe 100%);
+  background: linear-gradient(90deg, var(--a-color-primary) 0%, var(--color-text) 99%, var(--color-text) 100%);
   -webkit-background-clip: text;
   background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: var(--color-text-light); /* Brighter color on hover */
 }
 
 
@@ -377,53 +377,3 @@ nav ul li {
     list-style-position: inside;
   }
 }
-
-/* Smartphones (portrait and landscape) ----------- */
-@media only screen 
-and (min-device-width : 320px) 
-and (max-device-width : 480px) {
-  /* Styles */
-}
-
-/* Smartphones (landscape) ----------- */
-@media only screen 
-and (min-width : 321px) {
-  /* Styles */
-}
-
-/* Smartphones (portrait) ----------- */
-@media only screen 
-and (max-width : 320px) {
-  /* Styles */
-}
-
-/* iPads (portrait and landscape) ----------- */
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) {
-  /* Styles */
-}
-
-/* iPads (landscape) ----------- */
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) 
-and (orientation : landscape) {
-  /* Styles */
-}
-
-/* iPads (portrait) ----------- */
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) 
-and (orientation : portrait) {
-  /* Styles */
-}
-
-/* Adjust the grid layout for smaller screens */
-@media (max-width: 768px) {
-  .blog-tutorial-container {
-    display: block;
-  }
-}
-

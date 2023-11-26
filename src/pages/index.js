@@ -14,7 +14,7 @@ const HomeIndex = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <Bio />
-      <div className="blog-tutorial-container">
+      <div>
         <div>
           <h2>Recent Blog Posts</h2>
           <ol style={{ listStyle: `none` }}>
