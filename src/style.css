@@ -47,14 +47,14 @@
   --fontSize-5: 2.074rem;
   --fontSize-6: 2.488rem;
   --fontSize-7: 2.986rem;
-  --color-primary: #FAFAFA;
-  --a-color-primary: #22c1c3;
-  --color-text: #e6e6e6;
-  --color-text-light: #4f5969;
-  --color-heading: #e6e6e6;
-  --color-heading-black: e6e6e6;
-  --color-accent: #d1dce5;
-  --color-background: #183f74;
+  --color-primary: #BDBDBD; /* Muted version of #FAFAFA */
+  --a-color-primary: #607D8B; /* Muted version of #22c1c3 */
+  --color-text: #9E9E9E; /* Muted version of #e6e6e6 */
+  --color-text-light: #4f5969; /* Keep existing color, it's already muted */
+  --color-heading: #9E9E9E; /* Muted version of #e6e6e6 */
+  --color-heading-black: #757575; /* Muted version of #e6e6e6 */
+  --color-accent: #9E9E9E; /* Muted version of #d1dce5 */
+  --color-background: #212121; /* Dark background for contrast */
 }
 
 /* HTML elements */
