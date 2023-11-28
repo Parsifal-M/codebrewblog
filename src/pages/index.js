@@ -2,7 +2,6 @@ import * as React from "react"
 import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
-import Seo from "../components/seo"
 import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
 
 deckDeckGoHighlightElement();
@@ -15,7 +14,7 @@ const HomeIndex = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <Bio />
-      <div className="blog-tutorial-container">
+      <div>
         <div>
           <h2>Recent Blog Posts</h2>
           <ol style={{ listStyle: `none` }}>

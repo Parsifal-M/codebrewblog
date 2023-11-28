@@ -1,12 +1,10 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
-import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
 import Bio from "../components/bio";
 
-// deckDeckGoHighlightElement();
 
-const BlogIndex = ({ data, location }) => {
+const TutorialIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
 
@@ -57,7 +55,7 @@ const BlogIndex = ({ data, location }) => {
   )
 }
 
-export default BlogIndex
+export default TutorialIndex
 
 /**
  * Head export to define metadata for the page
@@ -73,7 +71,7 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/blog/" } },
+      filter: { fileAbsolutePath: { regex: "/tutorials/" } },
       sort: { frontmatter: {date: DESC}}
     ) {
       nodes {
