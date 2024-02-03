@@ -8,7 +8,7 @@ Hello everyone! In this post we are going to see how you can use OPA with Backst
 
 ## What is OPA?
 
-[OPA](https://www.openpolicyagent.org/) is an authorization framework that you can use to define authorization policies and then use them in applications. OPA is an open source project that was created by [Styra](https://www.styra.com/). It uses the declarative language Rego to define policies, more information on that [here](https://www.openpolicyagent.org/docs/latest/policy-language/).
+[OPA](https://www.openpolicyagent.org/) (pronounced “oh-pa”) is an open source, general-purpose policy engine that unifies policy enforcement across the stack. OPA is an open source project that was created by [Styra](https://www.styra.com/) and then donated to the [Cloud Native Computing Foundation](https://www.cncf.io/). It uses the declarative language Rego to define policies, more information on that [here](https://www.openpolicyagent.org/docs/latest/policy-language/).
 
 ## What is Backstage?
 

@@ -8,11 +8,11 @@ description: "Part 1: Como se puede usar OPA con Backstage para authorization"
 
 ## ¿Qué es OPA?
 
-[OPA](https://www.openpolicyagent.org/) es un marco de trabajo para la autorización que se puede usar para definir políticas de autorización y luego usarlas en aplicaciones. OPA es un proyecto de código abierto creado por [Styra](https://www.styra.com/). Utiliza el lenguaje declarativo Rego para definir políticas, puedes encontrar más información aquí: [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/).
+[OPA](https://www.openpolicyagent.org/) (pronunciado "oh-pa") es un 'policy engine' que unifica la aplicación de políticas en todo el stack. OPA es un proyecto open source que fue creado por [Styra](https://www.styra.com/) y luego donado a la [Cloud Native Computing Foundation](https://www.cncf.io/). Utiliza el lenguaje declarativo Rego para definir políticas, puedes encontrar más información sobre esto [aquí](https://www.openpolicyagent.org/docs/latest/policy-language/).
 
 ## ¿Qué es Backstage?
 
-[Backstage](https://backstage.io/) es un marco de trabajo de código abierto para crear un portal para desarrolladores (IDP o Portal Interno para Desarrolladores). Backstage fue creado por Spotify y donado a la [Cloud Native Computing Foundation](https://www.cncf.io/) y ha ganado mucha tracción en la comunidad de código abierto.
+[Backstage](https://backstage.io/) es un proyecto open source para crear un portal para desarrolladores (IDP o Internal Developer Portal). Backstage fue creado por Spotify y donado a la [Cloud Native Computing Foundation](https://www.cncf.io/) y ha ganado mucha tracción en la comunidad de código abierto.
 
 ## ¿Por qué usar OPA con Backstage?
 
