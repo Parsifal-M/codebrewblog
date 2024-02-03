@@ -1,6 +1,6 @@
 ---
 title: Usando OPA con Backstage para authorization!
-date: "2024-01-30T12:55:59Z"
+date: "2024-02-03T12:57:59Z"
 description: "Part 1: Como se puede usar OPA con Backstage para authorization"
 ---
 
@@ -16,7 +16,7 @@ description: "Part 1: Como se puede usar OPA con Backstage para authorization"
 
 ## ¿Por qué usar OPA con Backstage?
 
-Backstage utiliza el 'Permissions Framework' para definir permisos, esto es muy útil para definir permisos como RBAC en el portal. Sin embargo, los permisos se definen en 'policies' que están escritas en TypeScript. Esto en sí mismo no es malo y para la mayoría estará bien, pero tiene algunas desventajas, por ejemplo:
+Backstage utiliza el [Permissions Framework](https://backstage.io/docs/permissions/overview) para definir permisos, esto es muy útil para definir permisos como RBAC en el portal. Los permisos se definen en 'policies' (políticas) que están escritas en TypeScript. Esto en sí mismo no es malo y para la mayoría estará bien, pero tiene algunas desventajas, por ejemplo:
 
 - Si no conoces TypeScript, no puedes definir permisos.
 - Si tienes un equipo de seguridad que es responsable de definir los permisos, tienen que aprender TypeScript para poder definir los permisos.
@@ -25,7 +25,7 @@ Backstage utiliza el 'Permissions Framework' para definir permisos, esto es muy 
 
 ## ¿Cómo puede ayudar OPA?
 
-OPA se puede usar para definir políticas de autorización y luego usarlas en Backstage con el plugin [@parsifal-m/plugin-permission-backend-module-opa-wrapper](https://www.npmjs.com/package/@parsifal-m/plugin-permission-backend-module-opa-wrapper). El plugin simplemente reenvía las solicitudes de autorización a OPA y OPA responde con un `ALLOW` o `DENY` o `CONDITIONAL` (más sobre esto más adelante).
+OPA se puede usar para definir políticas de autorización y luego usarlas en Backstage con el plugin [@parsifal-m/plugin-permission-backend-module-opa-wrapper](https://www.npmjs.com/package/@parsifal-m/plugin-permission-backend-module-opa-wrapper). El plugin simplemente reenvía las solicitudes de autorización a OPA y OPA responde con un `ALLOW` o `DENY` o `CONDITIONAL` (más sobre esto en la parte 2!)
 
 Esto puede ayudar a simplificar la definición de permisos, ya que los permisos se definen en OPA (en Rego) y no en TypeScript, y no necesitas volver a desplegar el código cada vez que cambias los permisos, solo necesitas actualizar las políticas en OPA.
 

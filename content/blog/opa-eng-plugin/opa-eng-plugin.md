@@ -8,7 +8,7 @@ Hello everyone! In this post we are going to see how you can use OPA with Backst
 
 ## What is OPA?
 
-[OPA](https://www.openpolicyagent.org/) is an authorization framework that you can use to define authorization policies and then use them in applications. OPA is an open source project that was created by [Styra](https://www.styra.com/). It uses the declarative language Rego to define policies, more information on that here: [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/).
+[OPA](https://www.openpolicyagent.org/) is an authorization framework that you can use to define authorization policies and then use them in applications. OPA is an open source project that was created by [Styra](https://www.styra.com/). It uses the declarative language Rego to define policies, more information on that [here](https://www.openpolicyagent.org/docs/latest/policy-language/).
 
 ## What is Backstage?
 
@@ -16,7 +16,7 @@ Hello everyone! In this post we are going to see how you can use OPA with Backst
 
 ## Why use OPA with Backstage?
 
-Backstage uses the 'Permissions Framework' to define permissions, this is very useful for defining permissions like RBAC in the portal, however, the permissions are defined in 'policies' that are written in TypeScript. This in itself is not bad and for most will be fine, but it does have some drawbacks, for example:
+Backstage uses the [Permissions Framework](https://backstage.io/docs/permissions/overview) to define permissions, this is very useful for defining permissions like RBAC in the portal, the permissions are defined in 'policies' that are written in TypeScript. This in itself is not bad and for most will be fine, but it does have some drawbacks, for example:
 
 - If you don't know TypeScript, you can't define permissions.
 - If you have a security team that is responsible for defining permissions, they have to learn TypeScript to be able to define permissions.
@@ -25,7 +25,7 @@ Backstage uses the 'Permissions Framework' to define permissions, this is very u
 
 ## How can OPA help?
 
-OPA can be used to define authorization policies and then use them in Backstage with the plugin [@parsifal-m/plugin-permission-backend-module-opa-wrapper](https://www.npmjs.com/package/@parsifal-m/plugin-permission-backend-module-opa-wrapper). The plugin simply forwards the authorization requests to OPA and OPA responds with an `ALLOW` or `DENY` or `CONDITIONAL` (more on this later).
+OPA can be used to define authorization policies and then use them in Backstage with the plugin [@parsifal-m/plugin-permission-backend-module-opa-wrapper](https://www.npmjs.com/package/@parsifal-m/plugin-permission-backend-module-opa-wrapper). The plugin simply forwards the authorization requests to OPA and OPA responds with an `ALLOW` or `DENY` or `CONDITIONAL` (more on this in part 2!).
 
 This can help simplify the definition of permissions, as the permissions are defined in OPA (in Rego) and not in TypeScript, and you don't need to redeploy the code every time you change the permissions, you just need to update the policies in OPA.
 
