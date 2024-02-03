@@ -29,7 +29,7 @@ OPA can be used to define authorization policies and then use them in Backstage 
 
 This can help simplify the definition of permissions, as the permissions are defined in OPA (in Rego) and not in TypeScript, and you don't need to redeploy the code every time you change the permissions, you just need to update the policies in OPA.
 
-What benefits does this bring?
+### What benefits does this bring?
 
 - You don't need to know TypeScript to define permissions.
 - You don't need to redeploy the code every time you change the permissions, just update the policies in OPA.
@@ -51,3 +51,13 @@ The plugin [@parsifal-m/plugin-permission-backend-module-opa-wrapper](https://ww
 - Plugin 1: "Ok, Peter can delete a component"
 
 You can also find some high level design documents here in the Github Repo: [OPA Plugin Design](https://github.com/Parsifal-M/backstage-opa-plugins/tree/main/docs) and of course the [README](https://github.com/Parsifal-M/backstage-opa-plugins?tab=readme-ov-file#welcome-to-the-opa-plugins-repository-for-backstage)
+
+## How easy is it to set up?
+
+It's quite easy to set up, you can find the instructions in the README of the plugin here: [plugin-permission-backend-module-opa-wrapper](https://github.com/Parsifal-M/backstage-opa-plugins/blob/main/plugins/permission-backend-module-opa-wrapper/README.md). If you are on the "new" backend for Backstage its just a simple import.
+
+But instructions for both the "old" and "new" backends are provided in the README.
+
+## Conclusion
+
+The goal of this post was to introduce you to the idea of using OPA with Backstage for authorization. In part 2 we will go through some examples with OPA policies and how you can use them in Backstage, and also go into a bit more detail on what is going on under the hood.
